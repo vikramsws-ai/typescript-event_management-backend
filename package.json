@@ -11,6 +11,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "start": "node dist/server.js",
+    "migrate:create": "node-pg-migrate create",
+    "migrate:up": "node-pg-migrate up",
+    "migrate:down": "node-pg-migrate down",
     "prepare": "husky"
   },
   "lint-staged": {
@@ -23,17 +26,23 @@
     ]
   },
   "dependencies": {
-    "express": "^5.3.0"
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "pg": "^8.23.1",
+    "uuid": "^14.0.3",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.6",
+    "@types/pg": "^8.23.1",
     "eslint": "^10.15.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.14.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.6.0",
+    "node-pg-migrate": "^9.0.0",
     "prettier": "^3.10.1",
     "tsx": "^4.23.15",
     "typescript": "~5.9.3",
