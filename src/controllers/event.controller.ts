@@ -1,5 +1,5 @@
 import type { RequestHandler } from 'express';
-import * as eventService from '../services/event.service.js';
+import * as eventService from '../services/event.service';
 import type {
   CreateEventRequestDto,
   CreateEventResponseDto,

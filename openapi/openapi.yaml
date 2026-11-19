@@ -9,14 +9,16 @@ servers:
   - url: http://localhost:3000/api
     description: Local development server
 
+security: []
+
 paths:
   /event:
-    $ref: './paths/event.yaml#/event'
+    $ref: './paths/event.yaml'
 
 components:
   schemas:
     Event:
-      $ref: './schemas/event.yaml#/event'
+      $ref: './schemas/event.yaml'
 
     CreateEventRequest:
-      $ref: './schemas/event.yaml#/CreateEventRequest'
+      $ref: './schemas/create-event-request.yaml'

@@ -6,6 +6,7 @@ info:
 servers:
   - url: http://localhost:3000/api
     description: Local development server
+security: []
 paths:
   /event:
     get:
@@ -20,6 +21,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/event'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
     post:
       summary: Create an event
       operationId: createEvent
@@ -28,41 +33,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateEventRequest'
+              $ref: '#/components/schemas/create-event-request'
       responses:
-        '200':
+        '201':
           description: Event created successfully
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/event'
+        '400':
+          description: Invalid request data
+        '500':
+          description: Internal server error
 components:
   schemas:
     Event:
       $ref: '#/components/schemas/event'
     CreateEventRequest:
-      type: object
-      required:
-        - event_name
-        - location
-        - start_date
-        - end_date
-      properties:
-        event_name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 200
-        location:
-          type: string
-          maxLength: 100
-        start_date:
-          type: string
-          format: date-time
-        end_date:
-          type: string
-          format: date-time
+      $ref: '#/components/schemas/create-event-request'
     event:
       type: object
       required:
@@ -100,3 +88,26 @@ components:
           type: string
           format: date-time
           readOnly: true
+    create-event-request:
+      type: object
+      required:
+        - event_name
+        - location
+        - start_date
+        - end_date
+      properties:
+        event_name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        location:
+          type: string
+          maxLength: 100
+        start_date:
+          type: string
+          format: date-time
+        end_date:
+          type: string
+          format: date-time

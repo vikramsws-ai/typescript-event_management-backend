@@ -1,7 +1,9 @@
-import 'dotenv/config';
 import express, { Request, Response } from 'express';
-import eventRoutes from './routes/event.routes.js';
+import eventRoutes from './routes/event.routes';
 import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 const port: number = 3000;

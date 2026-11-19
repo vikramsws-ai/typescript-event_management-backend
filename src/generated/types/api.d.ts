@@ -27,15 +27,7 @@ export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
     Event: components['schemas']['event'];
-    CreateEventRequest: {
-      event_name: string;
-      description?: string;
-      location: string;
-      /** Format: date-time */
-      start_date: string;
-      /** Format: date-time */
-      end_date: string;
-    };
+    CreateEventRequest: components['schemas']['create-event-request'];
     event: {
       /** Format: uuid */
       event_id: string;
@@ -50,6 +42,15 @@ export interface components {
       readonly created_at: string;
       /** Format: date-time */
       readonly updated_at: string;
+    };
+    'create-event-request': {
+      event_name: string;
+      description?: string;
+      location: string;
+      /** Format: date-time */
+      start_date: string;
+      /** Format: date-time */
+      end_date: string;
     };
   };
   responses: never;
@@ -78,6 +79,20 @@ export interface operations {
           'application/json': components['schemas']['event'][];
         };
       };
+      /** @description Bad request */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Internal server error */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   createEvent: {
@@ -89,18 +104,32 @@ export interface operations {
     };
     requestBody: {
       content: {
-        'application/json': components['schemas']['CreateEventRequest'];
+        'application/json': components['schemas']['create-event-request'];
       };
     };
     responses: {
       /** @description Event created successfully */
-      200: {
+      201: {
         headers: {
           [name: string]: unknown;
         };
         content: {
           'application/json': components['schemas']['event'];
         };
+      };
+      /** @description Invalid request data */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Internal server error */
+      500: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };

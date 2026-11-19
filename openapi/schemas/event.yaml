@@ -1,75 +1,45 @@
-event:
-  type: object
-  required:
-    - event_id
-    - event_name
-    - location
-    - start_date
-    - end_date
-    - created_at
-    - updated_at
+type: object
 
-  properties:
-    event_id:
-      type: string
-      format: uuid
+required:
+  - event_id
+  - event_name
+  - location
+  - start_date
+  - end_date
+  - created_at
+  - updated_at
 
-    event_name:
-      type: string
-      maxLength: 100
+properties:
+  event_id:
+    type: string
+    format: uuid
 
-    description:
-      type: string
-      maxLength: 200
+  event_name:
+    type: string
+    maxLength: 100
 
-    location:
-      type: string
-      maxLength: 100
+  description:
+    type: string
+    maxLength: 200
 
-    start_date:
-      type: string
-      format: date-time
+  location:
+    type: string
+    maxLength: 100
 
-    end_date:
-      type: string
-      format: date-time
+  start_date:
+    type: string
+    format: date-time
 
-    created_at:
-      type: string
-      format: date-time
-      readOnly: true
+  end_date:
+    type: string
+    format: date-time
 
-    updated_at:
-      type: string
-      format: date-time
-      readOnly: true
+  created_at:
+    type: string
+    format: date-time
+    readOnly: true
 
-
-CreateEventRequest:
-  type: object
-  required:
-    - event_name
-    - location
-    - start_date
-    - end_date
-
-  properties:
-    event_name:
-      type: string
-      maxLength: 100
-
-    description:
-      type: string
-      maxLength: 200
-
-    location:
-      type: string
-      maxLength: 100
-
-    start_date:
-      type: string
-      format: date-time
-
-    end_date:
-      type: string
-      format: date-time
+  updated_at:
+    type: string
+    format: date-time
+    readOnly: true

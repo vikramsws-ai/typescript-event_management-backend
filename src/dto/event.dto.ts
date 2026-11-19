@@ -1,10 +1,11 @@
-import type { components } from '../generated/types/api.js';
+import type { components } from '../generated/types/api';
 
 // Request DTO
-export type CreateEventRequestDto = components['schemas']['CreateEventRequest'];
+export type CreateEventRequestDto =
+  components['schemas']['create-event-request'];
 
 // Event DTO
-export type EventResponseDto = components['schemas']['Event'];
+export type EventResponseDto = components['schemas']['event'];
 
 // Complete API response DTO
 export type CreateEventResponseDto = {

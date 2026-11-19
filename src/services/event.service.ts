@@ -1,9 +1,9 @@
-import * as eventRepository from '../repository/event.repository.js';
-import type { CreateEventRequestDto } from '../dto/event.dto.js';
+import * as eventRepository from '../repository/event.repository';
+import type { CreateEventRequestDto } from '../dto/event.dto';
 import {
   toCreateEventData,
   toEventResponse,
-} from '../transformers/event.transformer.js';
+} from '../transformers/event.transformer';
 
 export const createEvent = async (data: CreateEventRequestDto) => {
   try {
