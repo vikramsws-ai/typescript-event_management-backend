@@ -1,0 +1,5 @@
+get:
+  $ref: './event/get-event.yaml#/get'
+
+post:
+  $ref: './event/post-event.yaml#/post'

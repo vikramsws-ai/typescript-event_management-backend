@@ -1,0 +1,28 @@
+type: object
+
+required:
+  - event_name
+  - location
+  - start_date
+  - end_date
+
+properties:
+  event_name:
+    type: string
+    maxLength: 100
+
+  description:
+    type: string
+    maxLength: 200
+
+  location:
+    type: string
+    maxLength: 100
+
+  start_date:
+    type: string
+    format: date-time
+
+  end_date:
+    type: string
+    format: date-time

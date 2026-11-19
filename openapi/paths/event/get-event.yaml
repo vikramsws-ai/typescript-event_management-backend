@@ -1,0 +1,18 @@
+get:
+  summary: Get all events
+  operationId: getAllEvents
+
+  responses:
+    '200':
+      description: Events retrieved successfully
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../../schemas/event.yaml'
+    '400':
+      description: Bad request
+
+    '500':
+      description: Internal server error
