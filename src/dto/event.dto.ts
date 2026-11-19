@@ -1,15 +1,13 @@
-export type CreateEventDto = {
-  event_name: string;
-  location: string;
-  start_date: string;
-  end_date: string;
-};
-export type EventResponseDto = {
-  event_id: string;
-  event_name: string;
-  location: string;
-  start_date: string;
-  end_date: string;
-  created_at: string;
-  updated_at: string;
+import type { components } from '../generated/types/api.js';
+
+// Request DTO
+export type CreateEventRequestDto = components['schemas']['CreateEventRequest'];
+
+// Event DTO
+export type EventResponseDto = components['schemas']['Event'];
+
+// Complete API response DTO
+export type CreateEventResponseDto = {
+  message: string;
+  data?: EventResponseDto;
 };

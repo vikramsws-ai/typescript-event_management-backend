@@ -1,7 +1,8 @@
 import type { Event, Prisma } from '../../generated/prisma/client.js';
+import type { CreateEventRequestDto } from '../dto/event.dto.js';
 
 export const toCreateEventData = (
-  data: Prisma.EventCreateInput
+  data: CreateEventRequestDto
 ): Prisma.EventCreateInput => {
   return {
     event_name: data.event_name.trim(),

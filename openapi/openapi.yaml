@@ -1,0 +1,22 @@
+openapi: 3.1.0
+
+info:
+  title: Event Management API
+  version: 1.0.1
+  description: API documentation for the REST APIs
+
+servers:
+  - url: http://localhost:3000/api
+    description: Local development server
+
+paths:
+  /event:
+    $ref: './paths/event.yaml#/event'
+
+components:
+  schemas:
+    Event:
+      $ref: './schemas/event.yaml#/event'
+
+    CreateEventRequest:
+      $ref: './schemas/event.yaml#/CreateEventRequest'

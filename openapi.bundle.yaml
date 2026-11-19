@@ -1,0 +1,102 @@
+openapi: 3.1.0
+info:
+  title: Event Management API
+  version: 1.0.1
+  description: API documentation for the REST APIs
+servers:
+  - url: http://localhost:3000/api
+    description: Local development server
+paths:
+  /event:
+    get:
+      summary: Get all events
+      operationId: getAllEvents
+      responses:
+        '200':
+          description: Events retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/event'
+    post:
+      summary: Create an event
+      operationId: createEvent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEventRequest'
+      responses:
+        '200':
+          description: Event created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/event'
+components:
+  schemas:
+    Event:
+      $ref: '#/components/schemas/event'
+    CreateEventRequest:
+      type: object
+      required:
+        - event_name
+        - location
+        - start_date
+        - end_date
+      properties:
+        event_name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        location:
+          type: string
+          maxLength: 100
+        start_date:
+          type: string
+          format: date-time
+        end_date:
+          type: string
+          format: date-time
+    event:
+      type: object
+      required:
+        - event_id
+        - event_name
+        - location
+        - start_date
+        - end_date
+        - created_at
+        - updated_at
+      properties:
+        event_id:
+          type: string
+          format: uuid
+        event_name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 200
+        location:
+          type: string
+          maxLength: 100
+        start_date:
+          type: string
+          format: date-time
+        end_date:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
